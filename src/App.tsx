@@ -1,6 +1,32 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Clock, Coffee, Utensils, ArrowRight, Send, Instagram, Menu, X, ShoppingBag } from 'lucide-react';
+import { MapPin, Phone, Clock, Coffee, Utensils, ArrowRight, Send, Instagram, Menu, X, ShoppingBag, CupSoda, Flame, Leaf, GlassWater, Cookie, CakeSlice, Sandwich, Wine, Milk } from 'lucide-react';
 import { menuData } from './menuData';
+
+const getCategoryIcon = (category: string) => {
+  const map: Record<string, React.ReactNode> = {
+    "Кава": <Coffee className="w-5 h-5 text-brand-green" />,
+    "Холодні кавові напої": <CupSoda className="w-5 h-5 text-brand-green" />,
+    "Гарячі напої": <Flame className="w-5 h-5 text-brand-green" />,
+    "Какао": <Coffee className="w-5 h-5 text-brand-green" />,
+    "Гарячий шоколад": <Coffee className="w-5 h-5 text-brand-green" />,
+    "Матча": <Leaf className="w-5 h-5 text-brand-green" />,
+    "Чай": <CupSoda className="w-5 h-5 text-brand-green" />,
+    "Сезонні напої": <GlassWater className="w-5 h-5 text-brand-green" />,
+    "Вафлі": <Cookie className="w-5 h-5 text-brand-green" />,
+    "Десерти": <CakeSlice className="w-5 h-5 text-brand-green" />,
+    "Тістечка": <CakeSlice className="w-5 h-5 text-brand-green" />,
+    "Тортики": <CakeSlice className="w-5 h-5 text-brand-green" />,
+    "Паніні": <Sandwich className="w-5 h-5 text-brand-green" />,
+    "Бургери": <Sandwich className="w-5 h-5 text-brand-green" />,
+    "Хот-Дог": <Sandwich className="w-5 h-5 text-brand-green" />,
+    "Снеки": <Cookie className="w-5 h-5 text-brand-green" />,
+    "Лимонад": <GlassWater className="w-5 h-5 text-brand-green" />,
+    "Коктейлі": <Wine className="w-5 h-5 text-brand-green" />,
+    "Молочні коктейлі": <Milk className="w-5 h-5 text-brand-green" />,
+    "Холодні напої": <GlassWater className="w-5 h-5 text-brand-green" />,
+  };
+  return map[category] || <Utensils className="w-5 h-5 text-brand-green" />;
+};
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -8,7 +34,6 @@ export default function App() {
   const phoneNumber = "095 881 9986";
   const telegramLink = `https://t.me/+380958819986`;
   const instagramLink = "https://www.instagram.com/shalenacava/";
-  const lokoLink = "https://loko.silpo.ua/"; // TODO: replace with specific restuarant link
 
   return (
     <div className="min-h-screen flex flex-col selection:bg-brand-green selection:text-white">
@@ -44,15 +69,6 @@ export default function App() {
               <Phone className="w-4 h-4" />
               <span>{phoneNumber}</span>
             </a>
-            <a 
-              href={lokoLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 bg-[#FC2765] text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-[#E01E55] transition-colors"
-            >
-              <img src={`${import.meta.env.BASE_URL}loko-logo.png`} alt="Loko" className="w-4 h-4 object-contain rounded-sm shadow-sm" />
-              <span>Loko</span>
-            </a>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -80,15 +96,6 @@ export default function App() {
               >
                 <Phone className="w-5 h-5" />
                 <span>Зателефонувати</span>
-              </a>
-              <a 
-                href={lokoLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center space-x-2 bg-[#FC2765] text-white w-full py-3.5 rounded-full text-base font-medium hover:bg-[#E01E55] transition-colors"
-              >
-                <img src={`${import.meta.env.BASE_URL}loko-logo.png`} alt="Loko" className="w-5 h-5 object-contain rounded-sm shadow-sm" />
-                <span>Замовити в Loko</span>
               </a>
               <a 
                 href={instagramLink}
@@ -130,15 +137,6 @@ export default function App() {
               Відчуйте атмосферу найкращого закладу Бучі з майстерно приготованою спешелті кавою та крафтовими солодкими й солоними вафлями у вишуканій та затишній атмосфері.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start flex-wrap">
-              <a 
-                href={lokoLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center space-x-2 bg-[#FC2765] text-white px-8 py-4 rounded-full font-medium hover:bg-[#E01E55] transition-all hover:shadow-lg hover:-translate-y-0.5 w-full sm:w-auto"
-              >
-                <img src={`${import.meta.env.BASE_URL}loko-logo.png`} alt="Loko" className="w-5 h-5 object-contain rounded-sm shadow-sm" />
-                <span>Замовити в Loko</span>
-              </a>
               <a 
                 href={mapLink}
                 target="_blank"
@@ -230,19 +228,24 @@ export default function App() {
             <p className="text-brand-ink/70">Найкращі позиції для вашого задоволення</p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
             {Object.entries(menuData).map(([category, items]) => (
-              <div key={category} className="bg-white p-6 rounded-3xl shadow-sm border border-brand-sand h-fit">
-                <h3 className="text-xl font-serif text-brand-green-dark mb-6 flex items-center border-b border-brand-green/20 pb-4">
-                  {category}
-                </h3>
+              <div key={category} className="bg-gradient-to-b from-white to-brand-sand/10 p-6 rounded-[2rem] shadow-sm hover:shadow-md border border-brand-sand/60 break-inside-avoid mb-6 transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-center gap-4 mb-6 border-b border-brand-green/10 pb-4">
+                  <div className="w-12 h-12 flex items-center justify-center bg-white rounded-full shadow-sm border border-brand-sand shrink-0">
+                    {getCategoryIcon(category)}
+                  </div>
+                  <h3 className="text-xl font-serif text-brand-green-dark">
+                    {category}
+                  </h3>
+                </div>
                 <div className="space-y-4">
                   {items.map((item, i) => (
-                    <div key={i} className="flex justify-between items-baseline gap-2">
-                      <h4 className="text-sm md:text-base font-medium text-brand-ink flex-1 pr-2 leading-tight">{item.name}</h4>
-                      <div className="hidden sm:block flex-grow border-b border-dotted border-brand-ink/20 mx-2"></div>
+                    <div key={i} className="flex justify-between items-baseline gap-2 group">
+                      <h4 className="text-sm sm:text-base font-medium text-brand-ink/90 group-hover:text-brand-green-dark transition-colors">{item.name}</h4>
+                      <div className="flex-grow border-b-2 border-dotted border-brand-sand/50 mx-2 relative top-[-4px]"></div>
                       <div className="text-right whitespace-nowrap shrink-0">
-                        <span className="font-serif text-brand-green-dark font-medium">{item.price}</span>
+                        <span className="font-serif text-brand-green-dark font-semibold">{item.price}</span>
                       </div>
                     </div>
                   ))}
@@ -345,15 +348,12 @@ export default function App() {
                     <h4 className="font-semibold text-brand-ink mb-1">Контакти</h4>
                     <p className="text-brand-ink/70 mb-4">Зателефонуйте нам, щоб зробити замовлення або забронювати столик.</p>
                     <div className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center sm:justify-start">
-                      <a 
-                        href={lokoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center space-x-2 bg-[#FC2765] text-white px-5 py-3 sm:py-2.5 rounded-full text-sm font-medium hover:bg-[#E01E55] transition-colors w-full sm:w-auto"
+                      <div 
+                        className="inline-flex items-center justify-center space-x-2 bg-[#FC2765] text-white px-5 py-3 sm:py-2.5 rounded-full text-sm font-medium w-full sm:w-auto"
                       >
                         <img src={`${import.meta.env.BASE_URL}loko-logo.png`} alt="Loko" className="w-4 h-4 object-contain rounded-sm shadow-sm" />
-                        <span>Loko Доставка</span>
-                      </a>
+                        <span>Доставка Loko</span>
+                      </div>
                       <a 
                         href={`tel:${phoneNumber.replace(/\s/g, '')}`}
                         className="inline-flex items-center justify-center space-x-2 bg-brand-green text-white px-5 py-3 sm:py-2.5 rounded-full text-sm font-medium hover:bg-brand-green-dark transition-colors w-full sm:w-auto"
