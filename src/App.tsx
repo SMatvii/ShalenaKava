@@ -46,7 +46,7 @@ const getCategoryPlaceholderImage = (category: string) => {
     "Напої газовані": "https://images.unsplash.com/photo-1622543925917-763c34d1a86e?q=80&w=800&auto=format&fit=crop",
     "Вода": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=800&auto=format&fit=crop",
     "Сік": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?q=80&w=800&auto=format&fit=crop",
-    "Вафлі": "https://images.unsplash.com/photo-1562376552-0d160a2f148c?q=80&w=800&auto=format&fit=crop",
+    "Вафлі": "https://images.unsplash.com/photo-1596803244618-8dbee441d70b?q=80&w=800&auto=format&fit=crop",
     "Бургери": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop",
     "Паніні": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=800&auto=format&fit=crop",
     "Хот-Дог": "https://images.unsplash.com/photo-1594212691516-be00bc714f3b?q=80&w=800&auto=format&fit=crop",
@@ -63,12 +63,25 @@ const getCategoryPlaceholderImage = (category: string) => {
   return map[category] || "https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=800&auto=format&fit=crop"; 
 };
 
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24" 
+    fill="currentColor" 
+    className={className}
+  >
+    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.24-1.76.19-3.58 1.15-5.06 1.03-1.61 2.72-2.73 4.56-3.13 1.13-.25 2.33-.28 3.5-.15v4.06c-1.12-.11-2.29.13-3.19.82-.9.7-1.37 1.83-1.33 2.95.05 1.12.63 2.18 1.56 2.75 1.05.62 2.45.69 3.55.21 1.25-.56 2.05-1.92 2.14-3.3.09-2.22.06-4.45.08-6.68.01-4.14.01-8.28 0-12.43z" />
+  </svg>
+);
+
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<string>("Всі");
   const mapLink = "https://www.google.com/maps/place/Shalena+Kava%26wafti/@50.5412768,30.1920269,17z/data=!4m14!1m7!3m6!1s0x472b3140dbcac571:0x46d154ee8e98a70f!2sShalena+Kava%26wafti!8m2!3d50.5412768!4d30.1920269!16s%2Fg%2F11xmmfmpdg!3m5!1s0x472b3140dbcac571:0x46d154ee8e98a70f!8m2!3d50.5412768!4d30.1920269!16s%2Fg%2F11xmmfmpdg?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D";
   const phoneNumber = "095 881 9986";
   const telegramLink = `https://t.me/+380958819986`;
   const instagramLink = "https://www.instagram.com/shalenacava/";
+  const tiktokLink = "https://www.tiktok.com/@shalena.kava.bar";
 
   return (
     <div className="min-h-screen flex flex-col selection:bg-brand-green selection:text-white">
@@ -87,6 +100,15 @@ export default function App() {
           </div>
           
           <div className="hidden lg:flex items-center space-x-4">
+            <a 
+              href={tiktokLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-ink/80 hover:text-brand-green transition-colors"
+              aria-label="TikTok"
+            >
+              <TikTokIcon className="w-5 h-5" />
+            </a>
             <a 
               href={instagramLink}
               target="_blank"
@@ -182,8 +204,8 @@ export default function App() {
             </div>
             <div className="absolute -bottom-8 -left-8 aspect-square w-48 rounded-full overflow-hidden border-8 border-white shadow-xl transform -rotate-6">
               <img 
-                src="https://images.unsplash.com/photo-1562376552-0d160a2f148c?q=80&w=1925&auto=format&fit=crop" 
-                alt="Delicious waffles" 
+                src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=800&auto=format&fit=crop" 
+                alt="Coffee and dessert" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -237,15 +259,36 @@ export default function App() {
       {/* Menu Section */}
       <section id="menu" className="py-16 md:py-24 bg-white/50 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 md:mb-20">
+          <div className="text-center mb-10 md:mb-16">
             <h2 className="text-4xl md:text-5xl font-serif text-brand-green-dark mb-6">Меню</h2>
             <p className="text-brand-ink/70 text-lg max-w-2xl mx-auto">
               Обирайте свої улюблені позиції. Від класичної кави до фірмових солодощів — у нас є все для вашого ідеального дня.
             </p>
           </div>
           
+          {/* Category Filters */}
+          <div className="flex overflow-x-auto gap-3 mb-14 pb-4 px-2 snap-x snap-mandatory md:flex-wrap md:justify-center [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+            <button
+              onClick={() => setActiveCategory("Всі")}
+              className={`snap-start shrink-0 px-6 py-2.5 rounded-full text-sm font-medium transition-all ${activeCategory === "Всі" ? "bg-brand-green text-white shadow-md" : "bg-white text-brand-ink/70 hover:bg-brand-sand hover:text-brand-ink border border-brand-sand/50"}`}
+            >
+              Всі позиції
+            </button>
+            {Object.keys(menuData).map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`snap-start shrink-0 px-6 py-2.5 rounded-full text-sm font-medium transition-all ${activeCategory === cat ? "bg-brand-green text-white shadow-md" : "bg-white text-brand-ink/70 hover:bg-brand-sand hover:text-brand-ink border border-brand-sand/50"}`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
           <div className="space-y-20">
-            {Object.entries(menuData).map(([category, items]) => (
+            {Object.entries(menuData)
+              .filter(([category]) => activeCategory === "Всі" || category === activeCategory)
+              .map(([category, items]) => (
               <div key={category} className="scroll-mt-24">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="w-14 h-14 flex items-center justify-center bg-white rounded-2xl shadow-sm border border-brand-sand shrink-0">
@@ -406,6 +449,15 @@ export default function App() {
                         <span>Telegram</span>
                       </a>
                       <a 
+                        href={tiktokLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center space-x-2 bg-white text-brand-green border border-brand-green/20 px-5 py-3 sm:py-2.5 rounded-full text-sm font-medium hover:bg-brand-green/5 transition-colors w-full sm:w-auto"
+                      >
+                        <TikTokIcon className="w-4 h-4" />
+                        <span>TikTok</span>
+                      </a>
+                      <a 
                         href={instagramLink}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -445,6 +497,9 @@ export default function App() {
           
           <div className="text-center md:text-right text-sm text-white/60">
             <div className="flex items-center justify-center md:justify-end space-x-4 mb-4 md:mb-3">
+              <a href={tiktokLink} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label="TikTok">
+                <TikTokIcon className="w-6 h-6 md:w-5 md:h-5" />
+              </a>
               <a href={instagramLink} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label="Instagram">
                 <Instagram className="w-6 h-6 md:w-5 md:h-5" />
               </a>
