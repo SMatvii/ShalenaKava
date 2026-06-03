@@ -1,4 +1,6 @@
-export const menuData: Record<string, { name: string; price: string }[]> = {
+export type MenuItem = { name: string; price: string; description?: string; image?: string };
+
+export const menuData: Record<string, MenuItem[]> = {
   "Кава": [
     { name: "Американо 185 мл", price: "65 ₴" },
     { name: "Американо подвійний 185 мл", price: "85 ₴" },

@@ -28,6 +28,41 @@ const getCategoryIcon = (category: string) => {
   return map[category] || <Utensils className="w-5 h-5 text-brand-green" />;
 };
 
+const getCategoryPlaceholderImage = (category: string) => {
+  const map: Record<string, string> = {
+    "Кава": "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800&auto=format&fit=crop",
+    "Холодні кавові напої": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=800&auto=format&fit=crop",
+    "Гарячі напої": "https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop",
+    "Какао": "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?q=80&w=800&auto=format&fit=crop",
+    "Гарячий шоколад": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=800&auto=format&fit=crop",
+    "Матча": "https://images.unsplash.com/photo-1515823662972-da6a2e4d3002?q=80&w=800&auto=format&fit=crop",
+    "Чай": "https://images.unsplash.com/photo-1594892461821-4eabb18bfa67?q=80&w=800&auto=format&fit=crop",
+    "Сезонні напої": "https://images.unsplash.com/photo-1558231589-9a25032543e4?q=80&w=800&auto=format&fit=crop",
+    "Холодні напої": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=800&auto=format&fit=crop",
+    "Лимонад": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=800&auto=format&fit=crop",
+    "Коктейлі": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format&fit=crop",
+    "Молочні коктейлі": "https://images.unsplash.com/photo-1572490122747-3968b75bb8ef?q=80&w=800&auto=format&fit=crop",
+    "Чай холодний": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=800&auto=format&fit=crop",
+    "Напої газовані": "https://images.unsplash.com/photo-1622543925917-763c34d1a86e?q=80&w=800&auto=format&fit=crop",
+    "Вода": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=800&auto=format&fit=crop",
+    "Сік": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?q=80&w=800&auto=format&fit=crop",
+    "Вафлі": "https://images.unsplash.com/photo-1562376552-0d160a2f148c?q=80&w=800&auto=format&fit=crop",
+    "Бургери": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop",
+    "Паніні": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=800&auto=format&fit=crop",
+    "Хот-Дог": "https://images.unsplash.com/photo-1594212691516-be00bc714f3b?q=80&w=800&auto=format&fit=crop",
+    "Тости": "https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=800&auto=format&fit=crop",
+    "Тістечка": "https://images.unsplash.com/photo-1596706485827-048039d67b34?q=80&w=800&auto=format&fit=crop",
+    "Десерти": "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=800&auto=format&fit=crop",
+    "Тортики": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop",
+    "Печиво": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=800&auto=format&fit=crop",
+    "Пряники": "https://images.unsplash.com/photo-1557080829-4cefa7c585c5?q=80&w=800&auto=format&fit=crop",
+    "Снеки": "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?q=80&w=800&auto=format&fit=crop",
+    "Смарт кава": "https://images.unsplash.com/photo-1559525839-b184a4d698c7?q=80&w=800&auto=format&fit=crop",
+    "Магазин": "https://images.unsplash.com/photo-1559525839-b184a4d698c7?q=80&w=800&auto=format&fit=crop"
+  };
+  return map[category] || "https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=800&auto=format&fit=crop"; 
+};
+
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const mapLink = "https://www.google.com/maps/place/Shalena+Kava%26wafti/@50.5412768,30.1920269,17z/data=!4m14!1m7!3m6!1s0x472b3140dbcac571:0x46d154ee8e98a70f!2sShalena+Kava%26wafti!8m2!3d50.5412768!4d30.1920269!16s%2Fg%2F11xmmfmpdg!3m5!1s0x472b3140dbcac571:0x46d154ee8e98a70f!8m2!3d50.5412768!4d30.1920269!16s%2Fg%2F11xmmfmpdg?entry=ttu&g_ep=EgoyMDI2MDQwOC4wIKXMDSoASAFQAw%3D%3D";
@@ -46,7 +81,6 @@ export default function App() {
           
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center space-x-8 text-sm font-medium tracking-wide text-brand-ink/80">
-            <a href="#services" className="hover:text-brand-green transition-colors">Послуги</a>
             <a href="#menu" className="hover:text-brand-green transition-colors">Меню</a>
             <a href="#about" className="hover:text-brand-green transition-colors">Про нас</a>
             <a href="#location" className="hover:text-brand-green transition-colors">Локація</a>
@@ -80,36 +114,16 @@ export default function App() {
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-
-        {/* Mobile Nav Overlay */}
-        <div className={`fixed inset-0 bg-white z-40 transition-transform duration-300 ease-in-out lg:hidden ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-          <div className="flex flex-col items-center justify-center h-full space-y-8 text-lg font-medium text-brand-ink">
-            <a href="#services" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-green transition-colors">Послуги</a>
-            <a href="#menu" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-green transition-colors">Меню</a>
-            <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-green transition-colors">Про нас</a>
-            <a href="#location" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-green transition-colors">Локація</a>
-            
-            <div className="flex flex-col items-center space-y-6 pt-8 border-t border-brand-ink/10 w-2/3">
-              <a 
-                href={`tel:${phoneNumber.replace(/\s/g, '')}`}
-                className="flex items-center justify-center space-x-2 bg-brand-green text-white w-full py-3.5 rounded-full text-base font-medium hover:bg-brand-green-dark transition-colors"
-              >
-                <Phone className="w-5 h-5" />
-                <span>Зателефонувати</span>
-              </a>
-              <a 
-                href={instagramLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-brand-ink hover:text-brand-green transition-colors"
-              >
-                <Instagram className="w-6 h-6" />
-                <span>Instagram</span>
-              </a>
-            </div>
-          </div>
-        </div>
       </nav>
+
+      {/* Mobile Nav Overlay */}
+      <div className={`fixed inset-0 bg-white/70 backdrop-blur-lg z-40 pt-20 pb-10 transition-transform duration-300 ease-in-out lg:hidden ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="flex flex-col items-center justify-center h-full space-y-8 text-lg font-medium text-brand-ink">
+          <a href="#menu" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-green transition-colors">Меню</a>
+          <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-green transition-colors">Про нас</a>
+          <a href="#location" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-green transition-colors">Локація</a>
+        </div>
+      </div>
 
       {/* Hero Section */}
       <section className="relative pt-28 pb-16 md:pt-48 md:pb-32 px-4 sm:px-6 overflow-hidden">
@@ -221,31 +235,52 @@ export default function App() {
       </section>
 
       {/* Menu Section */}
-      <section id="menu" className="py-16 md:py-24 bg-brand-sand/30 px-4 sm:px-6">
+      <section id="menu" className="py-16 md:py-24 bg-white/50 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-serif text-brand-green-dark mb-4">Наше Меню</h2>
-            <p className="text-brand-ink/70">Найкращі позиції для вашого задоволення</p>
+          <div className="text-center mb-16 md:mb-20">
+            <h2 className="text-4xl md:text-5xl font-serif text-brand-green-dark mb-6">Меню</h2>
+            <p className="text-brand-ink/70 text-lg max-w-2xl mx-auto">
+              Обирайте свої улюблені позиції. Від класичної кави до фірмових солодощів — у нас є все для вашого ідеального дня.
+            </p>
           </div>
           
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
+          <div className="space-y-20">
             {Object.entries(menuData).map(([category, items]) => (
-              <div key={category} className="bg-gradient-to-b from-white to-brand-sand/10 p-6 rounded-[2rem] shadow-sm hover:shadow-md border border-brand-sand/60 break-inside-avoid mb-6 transition-all duration-300 hover:-translate-y-1">
-                <div className="flex items-center gap-4 mb-6 border-b border-brand-green/10 pb-4">
-                  <div className="w-12 h-12 flex items-center justify-center bg-white rounded-full shadow-sm border border-brand-sand shrink-0">
+              <div key={category} className="scroll-mt-24">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-14 h-14 flex items-center justify-center bg-white rounded-2xl shadow-sm border border-brand-sand shrink-0">
                     {getCategoryIcon(category)}
                   </div>
-                  <h3 className="text-xl font-serif text-brand-green-dark">
+                  <h3 className="text-3xl font-serif text-brand-green-dark">
                     {category}
                   </h3>
                 </div>
-                <div className="space-y-4">
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
                   {items.map((item, i) => (
-                    <div key={i} className="flex justify-between items-baseline gap-2 group">
-                      <h4 className="text-sm sm:text-base font-medium text-brand-ink/90 group-hover:text-brand-green-dark transition-colors">{item.name}</h4>
-                      <div className="flex-grow border-b-2 border-dotted border-brand-sand/50 mx-2 relative top-[-4px]"></div>
-                      <div className="text-right whitespace-nowrap shrink-0">
-                        <span className="font-serif text-brand-green-dark font-semibold">{item.price}</span>
+                    <div 
+                      key={i} 
+                      className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-lg hover:shadow-brand-green/5 border border-brand-sand/50 transition-all duration-300 group flex flex-col"
+                    >
+                      <div className="aspect-square w-full relative overflow-hidden bg-brand-sand/20">
+                        <img 
+                          src={item.image || getCategoryPlaceholderImage(category)} 
+                          alt={item.name} 
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
+                          referrerPolicy="no-referrer"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      </div>
+                      <div className="p-6 flex-1 flex flex-col justify-between bg-white relative top-0 group-hover:-top-1 transition-all">
+                        <div>
+                          <h4 className="font-semibold text-lg text-brand-ink mb-1 group-hover:text-brand-green-dark transition-colors">{item.name}</h4>
+                          {item.description && (
+                            <p className="text-sm text-brand-ink/60 line-clamp-2 mt-2">{item.description}</p>
+                          )}
+                        </div>
+                        <div className="flex justify-between items-end mt-6 pt-4 border-t border-brand-sand/50">
+                          <span className="font-serif text-xl text-brand-green-dark font-medium">{item.price}</span>
+                        </div>
                       </div>
                     </div>
                   ))}
